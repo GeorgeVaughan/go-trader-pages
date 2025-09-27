@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMMA Strategy (20,50)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                SMMA Strategy (20,50)
+            </h1>
+
+            <div id="dashboard">
+                
+                <div class="box">
+                    <div id="chart0"></div>
+                    
+                    <div id="controls"></div>
+                    
+                </div>
+                
+                <div class="box">
+                    <div id="chart1"></div>
+                    
+                </div>
+                
+                <div class="box">
+                    <div id="chart2"></div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong><a href="https://github.com/cinar/indicator">Indicator</a></strong> Copyright (c) 2021-2023 Onur Cinar. The source code is provided under GNU AGPLv3 License. 
+            </p>
+			<p>
+				2025-09-27 12:04:27.481531004 +0000 UTC m=+3.221105974
+			</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Load the Visualization API and the corechart and controls packages.
+        google.charts.load("current", { "packages": ["corechart", "controls"] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawDashboard);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawDashboard() {
+            var dashboard = new google.visualization.Dashboard(document.getElementById("dashboard"));
+
+            
+            var chart0 = new google.visualization.ChartWrapper({
+                "chartType": "LineChart",
+                "containerId": "chart0",
+                "options": {
+                    "curveType": "function",
+                    "legend": {
+                        "position": "right",
+                    },
+                    "height": 
+                        400,
+                },
+                "view": {
+                    "columns": [
+                        0,
+                        
+                        1,
+                        
+                        4,
+                        
+                    ]
+                },
+            });
+            
+            var chart1 = new google.visualization.ChartWrapper({
+                "chartType": "LineChart",
+                "containerId": "chart1",
+                "options": {
+                    "curveType": "function",
+                    "legend": {
+                        "position": "right",
+                    },
+                    "height": 
+                        200,
+                },
+                "view": {
+                    "columns": [
+                        0,
+                        
+                        2,
+                        
+                        3,
+                        
+                        4,
+                        
+                    ]
+                },
+            });
+            
+            var chart2 = new google.visualization.ChartWrapper({
+                "chartType": "LineChart",
+                "containerId": "chart2",
+                "options": {
+                    "curveType": "function",
+                    "legend": {
+                        "position": "right",
+                    },
+                    "height": 
+                        200,
+                },
+                "view": {
+                    "columns": [
+                        0,
+                        
+                        5,
+                        
+                    ]
+                },
+            });
+            
+
+            var rangeFilter = new google.visualization.ControlWrapper({
+                "controlType": "ChartRangeFilter",
+                "containerId": "controls",
+                "options": {
+                    "filterColumnLabel": "Date",
+                    "ui": {
+                        "chartOptions": {
+                            "height": 50,
+                        },
+                        "chartView": {
+                            "columns": [0, 1],
+                        }
+                    },
+                },
+            });
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn("date", "Date");
+            
+            data.addColumn({
+                "type": "number",
+                "label": "Close",
+                "role": "data",
+            });
+            
+            data.addColumn({
+                "type": "number",
+                "label": "MACD",
+                "role": "data",
+            });
+            
+            data.addColumn({
+                "type": "number",
+                "label": "Signal",
+                "role": "data",
+            });
+            
+            data.addColumn({
+                "type": "string",
+                "label": "",
+                "role": "annotation",
+            });
+            
+            data.addColumn({
+                "type": "number",
+                "label": "Outcome",
+                "role": "data",
+            });
+            
+
+            
+            data.addRow([
+                new Date("2025-09-02"),
+                
+                170.78,
+                
+                174.44200455012066,
+                
+                170.52200000000005,
+                
+                "B",
+                
+                0,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-03"),
+                
+                170.62,
+                
+                174.25890432261463,
+                
+                170.52716000000007,
+                
+                null,
+                
+                -0.09368778545496559,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-04"),
+                
+                171.66,
+                
+                174.0769591064839,
+                
+                170.52901680000005,
+                
+                null,
+                
+                0.5152828200023274,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-05"),
+                
+                167.02,
+                
+                173.95611115115972,
+                
+                170.55163646400004,
+                
+                null,
+                
+                -2.201662958191819,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-08"),
+                
+                168.31,
+                
+                173.60930559360173,
+                
+                170.48100373472005,
+                
+                null,
+                
+                -1.4463051879611166,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-09"),
+                
+                170.76,
+                
+                173.34434031392163,
+                
+                170.43758366002564,
+                
+                null,
+                
+                -0.011710973181877637,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-10"),
+                
+                177.33,
+                
+                173.21512329822554,
+                
+                170.44403198682514,
+                
+                null,
+                
+                3.835343717062889,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-11"),
+                
+                177.17,
+                
+                173.42086713331426,
+                
+                170.58175134708864,
+                
+                null,
+                
+                3.7416559316079123,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-12"),
+                
+                177.82,
+                
+                173.60832377664855,
+                
+                170.71351632014688,
+                
+                null,
+                
+                4.12226256001873,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-15"),
+                
+                177.75,
+                
+                173.8189075878161,
+                
+                170.85564599374393,
+                
+                null,
+                
+                4.081274153882175,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-16"),
+                
+                174.88,
+                
+                174.0154622084253,
+                
+                170.99353307386903,
+                
+                null,
+                
+                2.400749502283639,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-17"),
+                
+                170.29,
+                
+                174.05868909800404,
+                
+                171.07126241239163,
+                
+                null,
+                
+                -0.28691884295585224,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-18"),
+                
+                176.24,
+                
+                173.87025464310383,
+                
+                171.0556371641438,
+                
+                null,
+                
+                3.1970956786508964,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-19"),
+                
+                176.67,
+                
+                173.98874191094865,
+                
+                171.15932442086094,
+                
+                null,
+                
+                3.4488816020611157,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-22"),
+                
+                183.61,
+                
+                174.12280481540122,
+                
+                171.2695379324437,
+                
+                null,
+                
+                7.512589296170513,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-23"),
+                
+                178.43,
+                
+                174.59716457463117,
+                
+                171.51634717379486,
+                
+                null,
+                
+                4.479447242065815,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-24"),
+                
+                176.97,
+                
+                174.7888063458996,
+                
+                171.65462023031898,
+                
+                null,
+                
+                3.6245461997892026,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-25"),
+                
+                177.69,
+                
+                174.8978660286046,
+                
+                171.7609278257126,
+                
+                null,
+                
+                4.0461412343365755,
+                
+            ]);
+            
+            data.addRow([
+                new Date("2025-09-26"),
+                
+                178.19,
+                
+                175.03747272717436,
+                
+                171.87950926919837,
+                
+                null,
+                
+                4.33891556388335,
+                
+            ]);
+            
+
+            dashboard.bind(rangeFilter, [
+            
+                chart0,
+            
+                chart1,
+            
+                chart2,
+            
+            ]);
+            dashboard.draw(data);
+        }
+    </script>
+</body>
+
+</html>
